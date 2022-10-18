@@ -12,6 +12,7 @@ import (
 type Controllers interface {
 	CreateTodos(c *gin.Context)
 	GetTodos(c *gin.Context)
+	GetTodoByID(c *gin.Context)
 }
 
 type controllers struct {
@@ -19,43 +20,59 @@ type controllers struct {
 }
 
 func NewController(svc service.Service) Controllers {
-	return &controllers {
+	return &controllers{
 		service: svc,
 	}
 }
 
-func (control *controllers) GetTodos (c *gin.Context) {
+func (control *controllers) GetTodos(c *gin.Context) {
 	result, err := control.service.GetTodos(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"status" : "Bad Request",
+			"status": "Bad Request",
 		})
 		return
 	}
 	response := common.BuildResponse(true, "OK", result)
 
 	c.JSON(http.StatusOK, gin.H{
-		"data" : response,
+		"data": response,
 	})
 }
 
-func (control *controllers) CreateTodos (c *gin.Context) {
+func (control *controllers) CreateTodos(c *gin.Context) {
 	var input entity.TodosInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"status" : err.Error(),
+			"status": err.Error(),
 		})
 		return
 	}
 
 	todos := entity.Todos{
-		Title: input.Title,
+		Title:       input.Title,
 		Description: input.Description,
-		IsDone: input.IsDone,
+		IsDone:      input.IsDone,
 	}
 	entity.DB.Create(&todos)
 	c.JSON(http.StatusOK, gin.H{
-		"data" : todos,
+		"data": todos,
+	})
+}
+
+func (control *controllers) GetTodoByID(c *gin.Context) {
+	result, err := control.service.GetTodoByID(c)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": err.Error(),
+		})
+		return
+	}
+	id := c.Param("id")
+	response := common.BuildResponse(true, "OK", result)
+	entity.DB.Where("id = ?", id).Find(&response)
+	c.JSON(http.StatusOK, gin.H{
+		"data": response,
 	})
 }

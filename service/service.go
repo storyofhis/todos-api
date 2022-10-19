@@ -11,7 +11,7 @@ import (
 type Service interface {
 	CreateTodos(context.Context) (entity.Todos, error)
 	GetTodos(context.Context) ([]entity.Todos, error)
-	GetTodoByID(context.Context) (entity.Todos, error)
+	GetTodoByID(ctx context.Context, id string) (entity.Todos, error)
 }
 
 type service struct {
@@ -40,8 +40,8 @@ func (svc *service) CreateTodos(ctx context.Context) (entity.Todos, error) {
 	return res, nil
 }
 
-func (svc *service) GetTodoByID(ctx context.Context) (entity.Todos, error) {
-	res, err := svc.repo.GetTodoByID(ctx)
+func (svc *service) GetTodoByID(ctx context.Context, id string) (entity.Todos, error) {
+	res, err := svc.repo.GetTodoByID(ctx, id)
 	if err != nil {
 		log.Println(err)
 		return res, err

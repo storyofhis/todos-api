@@ -11,7 +11,7 @@ import (
 type Repository interface {
 	CreateTodos(context.Context) (entity.Todos, error)
 	GetTodos(context.Context) ([]entity.Todos, error)
-	GetTodoByID(context.Context) (entity.Todos, error)
+	GetTodoByID(ctx context.Context, id string) (entity.Todos, error)
 }
 
 type repositories struct {
@@ -45,9 +45,8 @@ func (db *repositories) GetTodos(ctx context.Context) ([]entity.Todos, error) {
 	return todos, nil
 }
 
-func (db *repositories) GetTodoByID(ctx context.Context) (entity.Todos, error) {
+func (db *repositories) GetTodoByID(ctx context.Context, id string) (entity.Todos, error) {
 	var todos entity.Todos
-	id := ctx.Value("id")
 	err := db.connection.WithContext(ctx).Where("id = ?", id).Find(&todos).Error
 	if err != nil {
 		log.Println(err)

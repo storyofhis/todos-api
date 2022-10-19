@@ -62,16 +62,22 @@ func (control *controllers) CreateTodos(c *gin.Context) {
 }
 
 func (control *controllers) GetTodoByID(c *gin.Context) {
-	result, err := control.service.GetTodoByID(c)
+	id := c.Param("id")
+	// strID, err := strconv.ParseUint(id)
+	result, err := control.service.GetTodoByID(c, id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status": err.Error(),
 		})
 		return
 	}
-	id := c.Param("id")
+	// id := c.Param("id")
 	response := common.BuildResponse(true, "OK", result)
-	entity.DB.Where("id = ?", id).Find(&response)
+	// err = entity.DB.Where("id = ?", id).Find(&response).Error
+	// fmt.Println(id)
+	// if err != nil {
+	// 	log.Println("id not found")
+	// }
 	c.JSON(http.StatusOK, gin.H{
 		"data": response,
 	})

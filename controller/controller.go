@@ -13,6 +13,7 @@ type Controllers interface {
 	CreateTodos(c *gin.Context)
 	GetTodos(c *gin.Context)
 	GetTodoByID(c *gin.Context)
+	EditTodos(c *gin.Context)
 }
 
 type controllers struct {
@@ -78,6 +79,36 @@ func (control *controllers) GetTodoByID(c *gin.Context) {
 	// if err != nil {
 	// 	log.Println("id not found")
 	// }
+	c.JSON(http.StatusOK, gin.H{
+		"data": response,
+	})
+}
+
+func (control *controllers) EditTodos(c *gin.Context) {
+	var input entity.TodosInput
+
+	if err := c.ShouldBindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": err.Error(),
+		})
+		return
+	}
+
+	todos := entity.Todos{
+		Title:       input.Title,
+		Description: input.Description,
+		IsDone:      input.IsDone,
+	}
+	id := c.Param("id")
+	result, err := control.service.EditTodos(c, id)
+	entity.DB.Model(&todos).Updates(input)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": err.Error(),
+		})
+		return
+	}
+	response := common.BuildResponse(true, "OK", result)
 	c.JSON(http.StatusOK, gin.H{
 		"data": response,
 	})

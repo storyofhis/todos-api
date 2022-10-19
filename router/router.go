@@ -20,6 +20,7 @@ func CreateRoute(controller controller.Controllers) *gin.Engine {
 	v1.POST("/todos", controller.CreateTodos)
 	v1.GET("/todos", controller.GetTodos)
 	v1.GET("/todos/:id", controller.GetTodoByID)
+	v1.PUT("/todos/:id", controller.EditTodos)
 
 	return route
 }

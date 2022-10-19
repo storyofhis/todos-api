@@ -12,6 +12,7 @@ type Repository interface {
 	CreateTodos(context.Context) (entity.Todos, error)
 	GetTodos(context.Context) ([]entity.Todos, error)
 	GetTodoByID(ctx context.Context, id string) (entity.Todos, error)
+	EditTodos(ctx context.Context, id string) (entity.Todos, error)
 }
 
 type repositories struct {
@@ -52,5 +53,20 @@ func (db *repositories) GetTodoByID(ctx context.Context, id string) (entity.Todo
 		log.Println(err)
 		return todos, err
 	}
+	return todos, nil
+}
+
+func (db *repositories) EditTodos(ctx context.Context, id string) (entity.Todos, error) {
+	var todos entity.Todos
+	err := db.connection.WithContext(ctx).Where("id = ?", id).First(&todos).Error
+	if err != nil {
+		log.Println(err)
+		return todos, err
+	}
+	// err = db.connection.WithContext(ctx).Create(&todos).Error
+	// if err != nil {
+	// 	log.Println(err)
+	// 	return todos, err
+	// }
 	return todos, nil
 }

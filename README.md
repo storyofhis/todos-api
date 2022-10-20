@@ -33,4 +33,4 @@ if you have trouble with your swagger i recommend you to execute (for macOS)
 ```
 export PATH=$(go env GOPATH)/bin:$PATH
 ```
-see our result on swagger [link][https://editor.swagger.io]
+see our result on swagger [link](https://editor.swagger.io)

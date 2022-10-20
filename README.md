@@ -29,7 +29,7 @@ go run *.go
 swag init -g main.go --parseDependency
 ```
 
-### if you have trouble with your swagger i recommend you to execute (for macOS)
+if you have trouble with your swagger i recommend you to execute (for macOS)
 ```
 export PATH=$(go env GOPATH)/bin:$PATH
 ```

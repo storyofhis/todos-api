@@ -1,0 +1,115 @@
+definitions:
+  entity.Todos:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      id:
+        type: integer
+      isDone:
+        type: boolean
+      title:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  http.Header:
+    additionalProperties:
+      items:
+        type: string
+      type: array
+    type: object
+info:
+  contact:
+    email: azizi.maula@gmail.com
+    name: API Support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /v1/todos:
+    get:
+      consumes:
+      - application/json
+      description: get todos data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Header'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Header'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Header'
+      summary: Show all todos data
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: Create a new Todos With the Input Payload
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+      summary: Create a Todos List
+      tags:
+      - todos
+  /v1/todos/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Todos ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Header'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Header'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Header'
+      summary: Show an todos by id
+      tags:
+      - todos
+swagger: "2.0"

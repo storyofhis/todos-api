@@ -26,6 +26,17 @@ func NewController(svc service.Service) Controllers {
 	}
 }
 
+// GetTodos godoc
+// @Summary      Show all todos data
+// @Description  get todos data
+// @Tags         todos
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  entity.Todos
+// @Failure      400  {object}  http.Header
+// @Failure      404  {object}  http.Header
+// @Failure      500  {object}  http.Header
+// @Router       /v1/todos [get]
 func (control *controllers) GetTodos(c *gin.Context) {
 	result, err := control.service.GetTodos(c)
 	if err != nil {
@@ -41,6 +52,14 @@ func (control *controllers) GetTodos(c *gin.Context) {
 	})
 }
 
+// CreateTodos godoc
+// @Summary Create a Todos List
+// @Description Create a new Todos With the Input Payload
+// @Tags todos
+// @Accept json
+// @Produce json
+// @Success 200 {object} entity.Todos
+// @Router /v1/todos [post]
 func (control *controllers) CreateTodos(c *gin.Context) {
 	var input entity.TodosInput
 
@@ -62,9 +81,26 @@ func (control *controllers) CreateTodos(c *gin.Context) {
 	})
 }
 
+// GetTodoByID godoc
+// @Summary      Show an todos by id
+// @Description  get string by ID
+// @Tags         todos
+// @Accept       json
+// @Produce      json
+// @Param        id   path      string  true  "Todos ID"
+// @Success      200  {object}  	entity.Todos
+// @Failure      400  {object}  http.Header
+// @Failure      404  {object}  http.Header
+// @Failure      500  {object}  http.Header
+// @Router       /v1/todos/{id} [get]
 func (control *controllers) GetTodoByID(c *gin.Context) {
 	id := c.Param("id")
 	// strID, err := strconv.ParseUint(id)
+	if id == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": "id cannot empty",
+		})
+	}
 	result, err := control.service.GetTodoByID(c, id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{

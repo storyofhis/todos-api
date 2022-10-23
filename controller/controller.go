@@ -39,10 +39,6 @@ func NewController(svc service.Service) Controllers {
 // @Failure      500  {object}  http.Header
 // @Router       /v1/todos [get]
 func (control *controllers) GetTodos(c *gin.Context) {
-	// try to solve CORS error conditions
-	c.Writer.Header().Set("Content-Type", "application/json")
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-
 	result, err := control.service.GetTodos(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -66,10 +62,6 @@ func (control *controllers) GetTodos(c *gin.Context) {
 // @Success 200 {object} entity.Todos
 // @Router /v1/todos [post]
 func (control *controllers) CreateTodos(c *gin.Context) {
-	// try to solve CORS error conditions
-	c.Writer.Header().Set("Content-Type", "application/json")
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-
 	var input entity.TodosInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -103,10 +95,6 @@ func (control *controllers) CreateTodos(c *gin.Context) {
 // @Failure      500  {object}  http.Header
 // @Router       /v1/todos/{id} [get]
 func (control *controllers) GetTodoByID(c *gin.Context) {
-	// try to solve CORS error conditions
-	c.Writer.Header().Set("Content-Type", "application/json")
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-
 	id := c.Param("id")
 	// strID, err := strconv.ParseUint(id)
 	if id == "" {
@@ -134,9 +122,6 @@ func (control *controllers) GetTodoByID(c *gin.Context) {
 }
 
 func (control *controllers) EditTodos(c *gin.Context) {
-	c.Writer.Header().Set("Content-Type", "application/json")
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-
 	var input entity.TodosInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {

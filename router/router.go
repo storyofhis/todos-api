@@ -21,6 +21,7 @@ func CreateRoute(controller controller.Controllers) *gin.Engine {
 	v1.GET("/todos", controller.GetTodos)
 	v1.GET("/todos/:id", controller.GetTodoByID)
 	v1.PUT("/todos/:id", controller.EditTodos)
+	v1.DELETE("/todos/:id", controller.DeleteTodo)
 
 	return route
 }

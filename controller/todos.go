@@ -31,7 +31,7 @@ func NewTodoController(svc service.TodoSvc) TodosControllers {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
-// @Router       /v1/todos [get]
+// @Router       /todos [get]
 func (control *todosController) GetTodos(c *gin.Context) {
 	result, err := control.svc.GetTodos(c)
 	if err != nil {
@@ -50,7 +50,7 @@ func (control *todosController) GetTodos(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Success 200 {object} entity.Todos
-// @Router /v1/todos [post]
+// @Router /todos [post]
 func (control *todosController) CreateTodo(c *gin.Context) {
 	var params entity.TodosParams
 
@@ -85,7 +85,7 @@ func (control *todosController) CreateTodo(c *gin.Context) {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
-// @Router       /v1/todos/{id} [get]
+// @Router       /todos/{id} [get]
 func (control *todosController) GetTodoByID(c *gin.Context) {
 	paramsId := c.Param("id")
 	id64, err := strconv.ParseUint(paramsId, 10, 32)
@@ -118,7 +118,7 @@ func (control *todosController) GetTodoByID(c *gin.Context) {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
-// @Router       /v1/todos/{id} [put]
+// @Router       /todos/{id} [put]
 func (control *todosController) UpdateTodo(c *gin.Context) {
 	var params entity.TodosParams
 
@@ -161,7 +161,7 @@ func (control *todosController) UpdateTodo(c *gin.Context) {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
-// @Router       /v1/todos/{id} [delete]
+// @Router       /todos/{id} [delete]
 func (control *todosController) DeleteTodo(c *gin.Context) {
 	paramsId := c.Param("id")
 	id64, err := strconv.ParseUint(paramsId, 10, 32)

@@ -23,7 +23,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1/todos": {
+        "/todos": {
             "get": {
                 "description": "get todos data",
                 "consumes": [
@@ -88,7 +88,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/todos/{id}": {
+        "/todos/{id}": {
             "get": {
                 "description": "get string by ID",
                 "consumes": [

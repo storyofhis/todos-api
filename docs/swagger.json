@@ -20,7 +20,7 @@
     "host": "todos-api-production.up.railway.app",
     "basePath": "/v1/",
     "paths": {
-        "/v1/todos": {
+        "/todos": {
             "get": {
                 "description": "get todos data",
                 "consumes": [
@@ -85,7 +85,7 @@
                 }
             }
         },
-        "/v1/todos/{id}": {
+        "/todos/{id}": {
             "get": {
                 "description": "get string by ID",
                 "consumes": [

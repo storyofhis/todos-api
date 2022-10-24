@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/storyofhis/golang-crud/todos/config"
@@ -43,11 +44,13 @@ func main() {
 
 	var (
 		db              = config.ConnectDB()
+		PORT            = os.Getenv("PORT")
 		todosRepo       = repository.NewTodosRepo(db)
 		todosSvc        = service.NewService(todosRepo)
 		todosController = controller.NewTodoController(todosSvc)
 	)
 	entity.DB.AutoMigrate(&entity.Todos{})
 	app := router.CreateRoute(todosController)
-	app.Run(":8080")
+
+	app.Run(":" + PORT)
 }

@@ -1,6 +1,11 @@
 {
+    "schemes": [
+        "http"
+    ],
     "swagger": "2.0",
     "info": {
+        "description": "This is a simple API for managing Create, Read, Update and Delete Data",
+        "title": "Todos API",
         "contact": {
             "name": "API Support",
             "email": "azizi.maula@gmail.com"
@@ -8,8 +13,11 @@
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+        },
+        "version": "1.0"
     },
+    "host": "localhost:8080",
+    "basePath": "/v1/",
     "paths": {
         "/v1/todos": {
             "get": {
@@ -28,7 +36,10 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entity.Todos"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.Todos"
+                            }
                         }
                     },
                     "400": {
@@ -75,7 +86,7 @@
         },
         "/v1/todos/{id}": {
             "get": {
-                "description": "get uint by ID",
+                "description": "get string by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -86,6 +97,102 @@
                     "todos"
                 ],
                 "summary": "Show an todos by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Todos ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Todos"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "edit uint by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Edit todos by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Todos ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Todos"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete uint by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Delete todos by id",
                 "parameters": [
                     {
                         "type": "integer",

@@ -1,3 +1,4 @@
+basePath: /v1/
 definitions:
   entity.Todos:
     properties:
@@ -30,13 +31,17 @@ definitions:
         type: string
       type: array
     type: object
+host: localhost:8080
 info:
   contact:
     email: azizi.maula@gmail.com
     name: API Support
+  description: This is a simple API for managing Create, Read, Update and Delete Data
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Todos API
+  version: "1.0"
 paths:
   /v1/todos:
     get:
@@ -49,7 +54,9 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/entity.Todos'
+            items:
+              $ref: '#/definitions/entity.Todos'
+            type: array
         "400":
           description: Bad Request
           schema:
@@ -80,10 +87,74 @@ paths:
       tags:
       - todos
   /v1/todos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete uint by ID
+      parameters:
+      - description: Todos ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Header'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Header'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Header'
+      summary: Delete todos by id
+      tags:
+      - todos
     get:
       consumes:
       - application/json
-      description: Edit todos
+      description: get string by ID
+      parameters:
+      - description: Todos ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Header'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Header'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Header'
+      summary: Show an todos by id
+      tags:
+      - todos
+    put:
+      consumes:
+      - application/json
+      description: edit uint by ID
       parameters:
       - description: Todos ID
         in: path
@@ -112,4 +183,6 @@ paths:
       summary: Edit todos by id
       tags:
       - todos
+schemes:
+- http
 swagger: "2.0"

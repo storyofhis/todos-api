@@ -40,7 +40,10 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entity.Todos"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.Todos"
+                            }
                         }
                     },
                     "400": {
@@ -87,7 +90,7 @@ const docTemplate = `{
         },
         "/v1/todos/{id}": {
             "get": {
-                "description": "get uint by ID",
+                "description": "get string by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -98,6 +101,102 @@ const docTemplate = `{
                     "todos"
                 ],
                 "summary": "Show an todos by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Todos ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Todos"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "edit uint by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Edit todos by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Todos ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Todos"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Header"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete uint by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Delete todos by id",
                 "parameters": [
                     {
                         "type": "integer",
@@ -189,12 +288,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
-	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Version:          "1.0",
+	Host:             "localhost:8080",
+	BasePath:         "/v1/",
+	Schemes:          []string{"http"},
+	Title:            "Todos API",
+	Description:      "This is a simple API for managing Create, Read, Update and Delete Data",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

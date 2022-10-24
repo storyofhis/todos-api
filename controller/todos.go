@@ -27,7 +27,7 @@ func NewTodoController(svc service.TodoSvc) TodosControllers {
 // @Tags         todos
 // @Accept       json
 // @Produce      json
-// @Success      200  {object}  entity.Todos
+// @Success      200  {object}  []entity.Todos
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
@@ -107,6 +107,18 @@ func (control *todosController) GetTodoByID(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
+// UpdateTodo	 godoc
+// @Summary      Edit todos by id
+// @Description  edit uint by ID
+// @Tags         todos
+// @Accept       json
+// @Produce      json
+// @Param        id   path      uint  true  "Todos ID"
+// @Success      200  {object}  entity.Todos
+// @Failure      400  {object}  http.Header
+// @Failure      404  {object}  http.Header
+// @Failure      500  {object}  http.Header
+// @Router       /v1/todos/{id} [put]
 func (control *todosController) UpdateTodo(c *gin.Context) {
 	var params entity.TodosParams
 
@@ -138,6 +150,18 @@ func (control *todosController) UpdateTodo(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
+// DeleteTodo	 godoc
+// @Summary      Delete todos by id
+// @Description  Delete uint by ID
+// @Tags         todos
+// @Accept       json
+// @Produce      json
+// @Param        id   path      uint  true  "Todos ID"
+// @Success      200  {object}  entity.Todos
+// @Failure      400  {object}  http.Header
+// @Failure      404  {object}  http.Header
+// @Failure      500  {object}  http.Header
+// @Router       /v1/todos/{id} [delete]
 func (control *todosController) DeleteTodo(c *gin.Context) {
 	paramsId := c.Param("id")
 	id64, err := strconv.ParseUint(paramsId, 10, 32)

@@ -21,6 +21,12 @@ func init() {
 	}
 }
 
+// @Title Todos API
+// @Description This is a simple API for managing Create, Read, Update and Delete Data
+// @Version 1.0
+// @Host localhost:8080
+// @BasePath /v1/
+// @Schemes http
 // @contact.name API Support
 // @contact.email azizi.maula@gmail.com
 // @license.name Apache 2.0

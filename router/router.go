@@ -5,17 +5,16 @@ import (
 	"github.com/storyofhis/golang-crud/todos/controller"
 )
 
-func CreateRoute(controller controller.Controllers) *gin.Engine {
+func CreateRoute(controller controller.TodosControllers) *gin.Engine {
 	route := gin.Default()
 
 	v1 := route.Group("/v1")
 	v1.Use(cors)
 
-	v1.POST("/todos", controller.CreateTodos)
+	v1.POST("/todos", controller.CreateTodo)
 	v1.GET("/todos", controller.GetTodos)
 	v1.GET("/todos/:id", controller.GetTodoByID)
-	v1.PUT("/todos/:id", controller.EditTodos)
-	v1.DELETE("/todos/:id", controller.DeleteTodo)
+	v1.PUT("/todos/:id", controller.UpdateTodo)
 
 	return route
 }

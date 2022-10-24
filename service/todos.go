@@ -2,9 +2,10 @@ package service
 
 import (
 	"context"
+	"log"
+
 	"github.com/storyofhis/golang-crud/todos/entity"
 	"github.com/storyofhis/golang-crud/todos/repository"
-	"log"
 )
 
 type todoService struct {
@@ -76,6 +77,20 @@ func (svc *todoService) UpdateTodo(ctx context.Context, id uint, params entity.T
 	}
 	todo.ID = id
 	res, err := svc.repo.UpdateTodo(ctx, todo)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	return &entity.TodosView{
+		ID:          res.ID,
+		Title:       res.Title,
+		Description: res.Description,
+		IsDone:      res.IsDone,
+	}, nil
+}
+
+func (svc *todoService) DeleteTodo(ctx context.Context, id uint) (*entity.TodosView, error) {
+	res, err := svc.repo.DeleteTodo(ctx, id)
 	if err != nil {
 		log.Println(err)
 		return nil, err

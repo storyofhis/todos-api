@@ -31,7 +31,6 @@ func NewTodoController(svc service.TodoSvc) TodosControllers {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
-// @BasePath 	 localhost:8080
 // @Router       /v1/todos [get]
 func (control *todosController) GetTodos(c *gin.Context) {
 	result, err := control.svc.GetTodos(c)
@@ -77,12 +76,12 @@ func (control *todosController) CreateTodo(c *gin.Context) {
 
 // GetTodoByID godoc
 // @Summary      Show an todos by id
-// @Description  get uint by ID
+// @Description  get string by ID
 // @Tags         todos
 // @Accept       json
 // @Produce      json
-// @Param        id   path      uint  true  "Todos ID"
-// @Success      200  {object}  entity.Todos
+// @Param        id   path      string  true  "Todos ID"
+// @Success      200  {object}  	entity.Todos
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
@@ -108,18 +107,6 @@ func (control *todosController) GetTodoByID(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
-// UpdateTodo godoc
-// @Summary 	Edit todos by id
-// @Description Edit todos
-// @Tags 		todos
-// @Accept 		json
-// @Produce 	json
-// @Param 		id 		path 		uint 	true 	"Todos ID"
-// @Success 	200 	{object} 	entity.Todos
-// @Failure     400  	{object} 	http.Header
-// @Failure     404  	{object}  	http.Header
-// @Failure     500  	{object}  	http.Header
-// @Router      /v1/todos/{id}		[put]
 func (control *todosController) UpdateTodo(c *gin.Context) {
 	var params entity.TodosParams
 
@@ -141,6 +128,28 @@ func (control *todosController) UpdateTodo(c *gin.Context) {
 	id := uint(id64)
 
 	result, err := control.svc.UpdateTodo(c, id, params)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, common.BuildErrorResponse(
+			"internal server error",
+			err))
+		return
+	}
+	response := common.BuildResponse("ok", result)
+	c.JSON(http.StatusCreated, response)
+}
+
+func (control *todosController) DeleteTodo(c *gin.Context) {
+	paramsId := c.Param("id")
+	id64, err := strconv.ParseUint(paramsId, 10, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, common.BuildErrorResponse(
+			"invalid id",
+			err))
+		return
+	}
+	id := uint(id64)
+
+	result, err := control.svc.DeleteTodo(c, id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, common.BuildErrorResponse(
 			"internal server error",

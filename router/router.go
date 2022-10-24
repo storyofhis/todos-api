@@ -15,6 +15,7 @@ func CreateRoute(controller controller.TodosControllers) *gin.Engine {
 	v1.GET("/todos", controller.GetTodos)
 	v1.GET("/todos/:id", controller.GetTodoByID)
 	v1.PUT("/todos/:id", controller.UpdateTodo)
+	v1.DELETE("/todos/:id", controller.DeleteTodo)
 
 	return route
 }
@@ -24,7 +25,7 @@ func cors(c *gin.Context) {
 	c.Header("Access-Control-Allow-Origin", "*")
 	c.Header("Access-Control-Allow-Credentials", "true")
 	c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-	c.Header("Access-Control-Allow-Methods", "POST,HEAD,PATCH, OPTIONS, GET, PUT")
+	c.Header("Access-Control-Allow-Methods", "POST,HEAD,PATCH, OPTIONS, GET, PUT, DELETE")
 
 	if c.Request.Method == "OPTIONS" {
 		c.AbortWithStatus(204)

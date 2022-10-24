@@ -2,9 +2,10 @@ package repository
 
 import (
 	"context"
+	"log"
+
 	"github.com/storyofhis/golang-crud/todos/entity"
 	"gorm.io/gorm"
-	"log"
 )
 
 type todosRepository struct {

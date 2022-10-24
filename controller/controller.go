@@ -9,4 +9,5 @@ type TodosControllers interface {
 	GetTodos(c *gin.Context)
 	GetTodoByID(c *gin.Context)
 	UpdateTodo(c *gin.Context)
+	DeleteTodo(c *gin.Context)
 }

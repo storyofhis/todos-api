@@ -31,7 +31,7 @@ func main() {
 	docs.SwaggerInfo.Title = "ToDos API"
 	docs.SwaggerInfo.Description = "This is a simple API for managing Create, Read, Update and Delete Data"
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:8000"
+	docs.SwaggerInfo.Host = "localhost:8080"
 	docs.SwaggerInfo.BasePath = "/v1/"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 

@@ -1,13 +1,14 @@
 package controller
 
 import (
+	"log"
+	"net/http"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/storyofhis/golang-crud/todos/common"
 	"github.com/storyofhis/golang-crud/todos/entity"
 	"github.com/storyofhis/golang-crud/todos/service"
-	"log"
-	"net/http"
-	"strconv"
 )
 
 type todosController struct {
@@ -30,6 +31,7 @@ func NewTodoController(svc service.TodoSvc) TodosControllers {
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
+// @BasePath 	 localhost:8080
 // @Router       /v1/todos [get]
 func (control *todosController) GetTodos(c *gin.Context) {
 	result, err := control.svc.GetTodos(c)
@@ -75,12 +77,12 @@ func (control *todosController) CreateTodo(c *gin.Context) {
 
 // GetTodoByID godoc
 // @Summary      Show an todos by id
-// @Description  get string by ID
+// @Description  get uint by ID
 // @Tags         todos
 // @Accept       json
 // @Produce      json
-// @Param        id   path      string  true  "Todos ID"
-// @Success      200  {object}  	entity.Todos
+// @Param        id   path      uint  true  "Todos ID"
+// @Success      200  {object}  entity.Todos
 // @Failure      400  {object}  http.Header
 // @Failure      404  {object}  http.Header
 // @Failure      500  {object}  http.Header
@@ -106,6 +108,18 @@ func (control *todosController) GetTodoByID(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
+// UpdateTodo godoc
+// @Summary 	Edit todos by id
+// @Description Edit todos
+// @Tags 		todos
+// @Accept 		json
+// @Produce 	json
+// @Param 		id 		path 		uint 	true 	"Todos ID"
+// @Success 	200 	{object} 	entity.Todos
+// @Failure     400  	{object} 	http.Header
+// @Failure     404  	{object}  	http.Header
+// @Failure     500  	{object}  	http.Header
+// @Router      /v1/todos/{id}		[put]
 func (control *todosController) UpdateTodo(c *gin.Context) {
 	var params entity.TodosParams
 

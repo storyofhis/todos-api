@@ -80,48 +80,16 @@ paths:
       tags:
       - todos
   /v1/todos/{id}:
-    delete:
-      consumes:
-      - application/json
-      description: Delete todos
-      parameters:
-      - description: Todos ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/entity.Todos'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/http.Header'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/http.Header'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/http.Header'
-      summary: Delete an todos by id
-      tags:
-      - todos
     get:
       consumes:
       - application/json
-      description: get string by ID
+      description: get uint by ID
       parameters:
       - description: Todos ID
         in: path
         name: id
         required: true
-        type: string
+        type: integer
       produces:
       - application/json
       responses:
@@ -142,6 +110,38 @@ paths:
           schema:
             $ref: '#/definitions/http.Header'
       summary: Show an todos by id
+      tags:
+      - todos
+    put:
+      consumes:
+      - application/json
+      description: Edit todos
+      parameters:
+      - description: Todos ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Todos'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Header'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Header'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Header'
+      summary: Edit todos by id
       tags:
       - todos
 swagger: "2.0"

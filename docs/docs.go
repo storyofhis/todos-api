@@ -87,7 +87,7 @@ const docTemplate = `{
         },
         "/v1/todos/{id}": {
             "get": {
-                "description": "get string by ID",
+                "description": "get uint by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -100,7 +100,7 @@ const docTemplate = `{
                 "summary": "Show an todos by id",
                 "parameters": [
                     {
-                        "type": "string",
+                        "type": "integer",
                         "description": "Todos ID",
                         "name": "id",
                         "in": "path",
@@ -134,8 +134,8 @@ const docTemplate = `{
                     }
                 }
             },
-            "delete": {
-                "description": "Delete todos",
+            "put": {
+                "description": "Edit todos",
                 "consumes": [
                     "application/json"
                 ],
@@ -145,10 +145,10 @@ const docTemplate = `{
                 "tags": [
                     "todos"
                 ],
-                "summary": "Delete an todos by id",
+                "summary": "Edit todos by id",
                 "parameters": [
                     {
-                        "type": "string",
+                        "type": "integer",
                         "description": "Todos ID",
                         "name": "id",
                         "in": "path",

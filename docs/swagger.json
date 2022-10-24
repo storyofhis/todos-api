@@ -75,7 +75,7 @@
         },
         "/v1/todos/{id}": {
             "get": {
-                "description": "get string by ID",
+                "description": "get uint by ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -88,7 +88,7 @@
                 "summary": "Show an todos by id",
                 "parameters": [
                     {
-                        "type": "string",
+                        "type": "integer",
                         "description": "Todos ID",
                         "name": "id",
                         "in": "path",
@@ -122,8 +122,8 @@
                     }
                 }
             },
-            "delete": {
-                "description": "Delete todos",
+            "put": {
+                "description": "Edit todos",
                 "consumes": [
                     "application/json"
                 ],
@@ -133,10 +133,10 @@
                 "tags": [
                     "todos"
                 ],
-                "summary": "Delete an todos by id",
+                "summary": "Edit todos by id",
                 "parameters": [
                     {
-                        "type": "string",
+                        "type": "integer",
                         "description": "Todos ID",
                         "name": "id",
                         "in": "path",

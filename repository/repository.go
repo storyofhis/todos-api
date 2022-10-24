@@ -10,4 +10,5 @@ type TodosRepo interface {
 	GetTodos(ctx context.Context) ([]entity.Todos, error)
 	GetTodoByID(ctx context.Context, id uint) (entity.Todos, error)
 	UpdateTodo(ctx context.Context, todo entity.Todos) (entity.Todos, error)
+	DeleteTodo(ctx context.Context, id uint) (entity.Todos, error)
 }

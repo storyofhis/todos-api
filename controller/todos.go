@@ -136,3 +136,37 @@ func (control *todosController) UpdateTodo(c *gin.Context) {
 	response := common.BuildResponse("ok", result)
 	c.JSON(http.StatusCreated, response)
 }
+
+// DeleteTodo godoc
+// @Summary      Delete an todos by id
+// @Description  Delete (Update Deleted At) todo by ID
+// @Tags         todos
+// @Accept       json
+// @Produce      json
+// @Param        id   path      string  true  "Todos ID"
+// @Success      200  {object}  	entity.Todos
+// @Failure      400  {object}  http.Header
+// @Failure      404  {object}  http.Header
+// @Failure      500  {object}  http.Header
+// @Router       /v1/todos/{id} [delete]
+func (control *todosController) DeleteTodo(c *gin.Context) {
+	paramsId := c.Param("id")
+	id64, err := strconv.ParseUint(paramsId, 10, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, common.BuildErrorResponse(
+			"invalid id",
+			err))
+		return
+	}
+	id := uint(id64)
+
+	result, err := control.svc.DeleteTodo(c, id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, common.BuildErrorResponse(
+			"internal server error",
+			err))
+		return
+	}
+	response := common.BuildResponse("ok", result)
+	c.JSON(http.StatusCreated, response)
+}

@@ -87,3 +87,17 @@ func (svc *todoService) UpdateTodo(ctx context.Context, id uint, params entity.T
 		IsDone:      res.IsDone,
 	}, nil
 }
+
+func (svc *todoService) DeleteTodo(ctx context.Context, id uint) (*entity.TodosView, error) {
+	res, err := svc.repo.DeleteTodo(ctx, id)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	return &entity.TodosView{
+		ID:			 res.ID,
+		Title:		 res.Title,
+		Description: res.Description,
+		IsDone: 	 res.IsDone,
+	}, nil
+}

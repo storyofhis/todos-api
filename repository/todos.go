@@ -54,3 +54,13 @@ func (db *todosRepository) UpdateTodo(ctx context.Context, todo entity.Todos) (e
 	}
 	return todo, nil
 }
+
+func (db *todosRepository) DeleteTodo(ctx context.Context, id uint) (entity.Todos, error) {
+	var todo entity.Todos
+	err := db.connection.WithContext(ctx).Where("id = ?", id).Delete(&todo).Error
+	if err != nil {
+		log.Println(err)
+		return todo, err
+	}
+	return todo, nil
+}

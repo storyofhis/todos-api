@@ -25,20 +25,21 @@ func init() {
 // @Title Todos API
 // @Description This is a simple API for managing Create, Read, Update and Delete Data
 // @Version 1.0
-// @Host localhost:8080
+// @Host todos-api-production.up.railway.app
 // @BasePath /v1/
-// @Schemes http
+// @Schemes https http
 // @contact.name API Support
 // @contact.email azizi.maula@gmail.com
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @query.collection.format multi
 
 func main() {
 	// programmatically set swagger info
 	docs.SwaggerInfo.Title = "ToDos API"
 	docs.SwaggerInfo.Description = "This is a simple API for managing Create, Read, Update and Delete Data"
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:8080"
+	docs.SwaggerInfo.Host = "https://todos-api-production.up.railway.app"
 	docs.SwaggerInfo.BasePath = "/v1/"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 

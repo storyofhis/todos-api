@@ -289,9 +289,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8080",
+	Host:             "todos-api-production.up.railway.app",
 	BasePath:         "/v1/",
-	Schemes:          []string{"http"},
+	Schemes:          []string{"https", "http"},
 	Title:            "Todos API",
 	Description:      "This is a simple API for managing Create, Read, Update and Delete Data",
 	InfoInstanceName: "swagger",

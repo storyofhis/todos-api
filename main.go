@@ -11,7 +11,6 @@ import (
 	"github.com/storyofhis/golang-crud/todos/repository"
 	"github.com/storyofhis/golang-crud/todos/router"
 	"github.com/storyofhis/golang-crud/todos/service"
-	"gorm.io/gorm"
 )
 
 func init() {
@@ -37,13 +36,12 @@ func main() {
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 
 	var (
-		db   *gorm.DB              = config.ConnectDB()
-		repo repository.Repository = repository.NewRepository(db)
-		svc  service.Service       = service.NewService(repo)
-
-		controller controller.Controllers = controller.NewController(svc)
+		db              = config.ConnectDB()
+		todosRepo       = repository.NewTodosRepo(db)
+		todosSvc        = service.NewService(todosRepo)
+		todosController = controller.NewTodoController(todosSvc)
 	)
 	entity.DB.AutoMigrate(&entity.Todos{})
-	app := router.CreateRoute(controller)
+	app := router.CreateRoute(todosController)
 	app.Run(":8080")
 }

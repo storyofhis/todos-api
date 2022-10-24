@@ -36,7 +36,7 @@ func (control *todosController) GetTodos(c *gin.Context) {
 	result, err := control.svc.GetTodos(c)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, common.BuildErrorResponse(
-			"Internal server error",
+			"internal server error",
 			err))
 		return
 	}

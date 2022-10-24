@@ -12,7 +12,7 @@ type todoService struct {
 	repo repository.TodosRepo
 }
 
-func NewService(repo repository.TodosRepo) TodoSvc {
+func NewTodoService(repo repository.TodosRepo) TodoSvc {
 	return &todoService{
 		repo: repo,
 	}
@@ -22,6 +22,7 @@ func (svc *todoService) GetTodos(ctx context.Context) ([]entity.TodosView, error
 	res, err := svc.repo.GetTodos(ctx)
 	if err != nil {
 		log.Println(err)
+		return nil, err
 	}
 
 	todoViews := make([]entity.TodosView, 0)

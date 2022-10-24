@@ -46,7 +46,7 @@ func main() {
 		db              = config.ConnectDB()
 		PORT            = os.Getenv("PORT")
 		todosRepo       = repository.NewTodosRepo(db)
-		todosSvc        = service.NewService(todosRepo)
+		todosSvc        = service.NewTodoService(todosRepo)
 		todosController = controller.NewTodoController(todosSvc)
 	)
 	entity.DB.AutoMigrate(&entity.Todos{})

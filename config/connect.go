@@ -19,7 +19,7 @@ func ConnectDB() *gorm.DB {
 
 	var err error
 	dsn := fmt.Sprintf(
-		"host=%s port=%s password=%s user=%s dbname=%s",
+		"host=%s port=%s password=%s user=%s dbname=%s sslmode=disable",
 		dbHost, dbPort, dbPass, dbUser, dbName,
 	)
 

@@ -96,16 +96,9 @@ func (svc *todoService) DeleteTodo(ctx context.Context, id uint) (*entity.TodosV
 		return nil, err
 	}
 	return &entity.TodosView{
-<<<<<<< HEAD
 		ID:          res.ID,
 		Title:       res.Title,
 		Description: res.Description,
 		IsDone:      res.IsDone,
-=======
-		ID:			 res.ID,
-		Title:		 res.Title,
-		Description: res.Description,
-		IsDone: 	 res.IsDone,
->>>>>>> 4a7b381596bf25cd09c12f9af1a4833e1c911fc7
 	}, nil
 }

@@ -1,5 +1,10 @@
 package common
 
+import (
+	"bytes"
+	"encoding/json"
+)
+
 type Response struct {
 	Message string `json:"message"`
 	Errors  any    `json:"errors"`
@@ -24,4 +29,10 @@ func BuildErrorResponse(message string, err error) Response {
 		Data:    nil,
 	}
 	return res
+}
+
+func MapToStruct(in, out interface{}) {
+	buf := new(bytes.Buffer)
+	json.NewEncoder(buf).Encode(in)
+	json.NewDecoder(buf).Decode(out)
 }

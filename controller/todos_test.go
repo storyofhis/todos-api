@@ -58,7 +58,7 @@ func TestTodosController_CreateTodo_Success(t *testing.T) {
 	requestBody := `
 		{
 			"title": "My title",
-			"title": "My Description",
+			"description": "My Description",
 			"isDone": true
 		}
 	`
@@ -108,7 +108,7 @@ func TestTodosController_CreateTodo_ServerError(t *testing.T) {
 	requestBody := `
 		{
 			"title": "My title",
-			"title": "My Description",
+			"description": "My Description",
 			"isDone": true
 		}
 	`
@@ -148,7 +148,7 @@ func TestTodosController_UpdateTodo_Success(t *testing.T) {
 	requestBody := `
 		{
 			"title": "Updated title",
-			"title": "Updated Description",
+			"description": "Updated Description",
 			"isDone": false
 		}
 	`
@@ -198,7 +198,7 @@ func TestTodosController_UpdateTodo_ServerError(t *testing.T) {
 	requestBody := `
 		{
 			"title": "Updated title",
-			"title": "Updated Description",
+			"description": "Updated Description",
 			"isDone": false
 		}
 	`

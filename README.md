@@ -37,32 +37,32 @@ see our result on swagger [link](https://editor.swagger.io)
 
 ## list endpoint
 
-### CreateTodo -> Membuat todo list 
+### CreateTodo -> Create a list activity 
 ```
 POST https://todos-api-production.up.railway.app/v1/todos
 ```
 
-### GetTodos -> Memunculkan seluruh todo list 
+### GetTodos -> Display all of your list activity 
 ```
 GET https://todos-api-production.up.railway.app/v1/todos
 ```
 
-### GetTodoByID -> Memunculkan todo list berdasarkan ID 
+### GetTodoByID -> Display all of your list activity with specific id  
 ```
 GET https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### UpdateTodo -> Mengedit dan mengupdate todo list
+### UpdateTodo -> Edit and update a list activity
 ```
 PUT https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### DeleteTodo -> Menghapus todo list 
+### DeleteTodo -> Delete list from your activity 
 ```
 DELETE https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### Jobdesk Anggota
+### Jobdesk member
 
 - MAULA IZZA AZIZI (GLNG-KS04-020) : 
    -  Initialize Project 

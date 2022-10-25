@@ -38,40 +38,54 @@ see our result on swagger [link](https://editor.swagger.io)
 ## list endpoint
 
 ### CreateTodo -> Membuat todo list 
-- POST 
 ```
-https://todos-api-production.up.railway.app/v1/todos
+POST https://todos-api-production.up.railway.app/v1/todos
 ```
 
 ### GetTodos -> Memunculkan seluruh todo list 
-- GET
 ```
-https://todos-api-production.up.railway.app/v1/todos
+GET https://todos-api-production.up.railway.app/v1/todos
 ```
 
-### GetTodoByID -> Memunculkan todo list berdasarkan ID
-- GET 
+### GetTodoByID -> Memunculkan todo list berdasarkan ID 
 ```
-https://todos-api-production.up.railway.app/v1/todos/:id
+GET https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
 ### UpdateTodo -> Mengedit dan mengupdate todo list
-- PUT 
 ```
-https://todos-api-production.up.railway.app/v1/todos/:id
+PUT https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
 ### DeleteTodo -> Menghapus todo list 
-- DELETE 
 ```
-https://todos-api-production.up.railway.app/v1/todos/:id
+DELETE https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### tugas anggota (team 9)
+### Jobdesk Anggota
 
-GLNG-KS04-020 - MAULA IZZA AZIZI      : Initialize Project, CreateTodo, UpdateTodo, GetAllTodos, GetTodoByID, Swaggo, Deployment
+- MAULA IZZA AZIZI (GLNG-KS04-020) : 
+   -  Initialize Project 
+   -  CreateTodo
+   -  UpdateTodo
+   -  GetAllTodos
+   -  GetTodoByID
+   -  Swaggo
+   -  Deployment
 
-GLNG-KS04-008 - HEZKYA NATANAEL RAMLI : CreateTodo, UpdateTodo, GetAllTodos, GetTodoByID, Mocking, Unit Test
+- HEZKYA NATANAEL RAMLI (GLNG-KS04-008) : 
+   -  CreateTodo
+   -  UpdateTodo
+   -  GetAllTodos
+   -  GetTodoByID
+   -  Mocking
+   -  Unit Test
 
-GLNG-KS04-002 - MUHAMAD RESTU FADILLAH: UpdateTodo, DeleteTodo, Swaggo, Deployment, Postman Collection
+- MUHAMAD RESTU FADILLAH (GLNG-KS04-002) : 
+   -  UpdateTodo
+   -  DeleteTodo
+   -  Swaggo
+   -  Deployment
+   -  Postman 
+   -  Collection
 

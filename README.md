@@ -34,3 +34,19 @@ if you have trouble with your swagger i recommend you to execute (for macOS)
 export PATH=$(go env GOPATH)/bin:$PATH
 ```
 see our result on swagger [link](https://editor.swagger.io)
+
+### list endpoint
+
+CreateTodo -> POST "/todos"
+GetTodos ->	  GET "/todos"
+GetTodoByID	-> GET "/todos/:id"
+UpdateTodo -> PUT "/todos/:id"
+DeleteTodo -> DELETE "/todos/:id"
+
+
+### tugas anggota (team 9)
+
+GLNG-KS04-020 - MAULA IZZA AZIZI      : Initialize Project, CreateTodo, UpdateTodo, GetAllTodos, GetTodoByID, Swaggo, Deployment
+GLNG-KS04-008 - HEZKYA NATANAEL RAMLI : CreateTodo, UpdateTodo, GetAllTodos, GetTodoByID, Mocking, Unit Test
+GLNG-KS04-002 - MUHAMAD RESTU FADILLAH: UpdateTodo, DeleteTodo, Swaggo, Deployment, Postman Collection
+

@@ -37,15 +37,15 @@ see our result on swagger [link](https://editor.swagger.io)
 
 ### list endpoint
 
-CreateTodo -> POST "/todos"
+CreateTodo -> POST "/todos" -> Membuat todo list
 
-GetTodos ->	  GET "/todos"
+GetTodos ->	  GET "/todos" -> Memunculkan seluruh todo list
 
-GetTodoByID	-> GET "/todos/:id"
+GetTodoByID	-> GET "/todos/:id" -> memunculkan todo list berdasarkan ID
 
-UpdateTodo -> PUT "/todos/:id"
+UpdateTodo -> PUT "/todos/:id" -> mengedit dan mengupdate todo list
 
-DeleteTodo -> DELETE "/todos/:id"
+DeleteTodo -> DELETE "/todos/:id" -> menghapus todo list 
 
 
 ### tugas anggota (team 9)

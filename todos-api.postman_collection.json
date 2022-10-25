@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7484767c-2ad0-491d-a4e9-00679a23763d",
+		"_postman_id": "05a1b17f-51e9-43bd-8586-aced5a3c6229",
 		"name": "todos-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23401211"
@@ -12,7 +12,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "todos-api-production.up.railway.app/v1/todos",
+					"raw": "https://todos-api-production.up.railway.app/v1/todos",
+					"protocol": "https",
 					"host": [
 						"todos-api-production",
 						"up",
@@ -42,7 +43,8 @@
 					}
 				},
 				"url": {
-					"raw": "todos-api-production.up.railway.app/v1/todos",
+					"raw": "https://todos-api-production.up.railway.app/v1/todos",
+					"protocol": "https",
 					"host": [
 						"todos-api-production",
 						"up",
@@ -63,29 +65,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "todos-api-production.up.railway.app/v1/todos/1",
-					"host": [
-						"todos-api-production",
-						"up",
-						"railway",
-						"app"
-					],
-					"path": [
-						"v1",
-						"todos",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETETODO",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "todos-api-production.up.railway.app/v1/todos/4",
+					"raw": "https://todos-api-production.up.railway.app/v1/todos/4",
+					"protocol": "https",
 					"host": [
 						"todos-api-production",
 						"up",
@@ -102,13 +83,36 @@
 			"response": []
 		},
 		{
+			"name": "DELETETODO",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://todos-api-production.up.railway.app/v1/todos/5",
+					"protocol": "https",
+					"host": [
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"v1",
+						"todos",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "EDITTODO",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\" : \"todo9\"\r\n    \"description\" : \"lorem ipsum dolor ipsit\",\r\n    \"isDone\" : true\r\n}",
+					"raw": "{\r\n    \"title\" : \"todo4 test\",\r\n    \"description\" : \"lorem ipsum dolor ipsit\",\r\n    \"isDone\" : true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -116,7 +120,8 @@
 					}
 				},
 				"url": {
-					"raw": "todos-api-production.up.railway.app/v1/todos/4",
+					"raw": "https://todos-api-production.up.railway.app/v1/todos/4",
+					"protocol": "https",
 					"host": [
 						"todos-api-production",
 						"up",

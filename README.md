@@ -37,7 +37,11 @@ see our result on swagger [link](https://editor.swagger.io)
 
 ### list endpoint
 
-CreateTodo -> POST "/todos" -> Membuat todo list
+#### CreateTodo ->Membuat todo list 
+- POST 
+```
+https://todos-api-production.up.railway.app/v1/todos
+```
 
 GetTodos ->	  GET "/todos" -> Memunculkan seluruh todo list
 

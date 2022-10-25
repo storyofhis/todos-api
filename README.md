@@ -35,22 +35,37 @@ export PATH=$(go env GOPATH)/bin:$PATH
 ```
 see our result on swagger [link](https://editor.swagger.io)
 
-### list endpoint
+## list endpoint
 
-#### CreateTodo ->Membuat todo list 
+### CreateTodo -> Membuat todo list 
 - POST 
 ```
 https://todos-api-production.up.railway.app/v1/todos
 ```
 
-GetTodos ->	  GET "/todos" -> Memunculkan seluruh todo list
+### GetTodos -> Memunculkan seluruh todo list 
+- GET
+```
+https://todos-api-production.up.railway.app/v1/todos
+```
 
-GetTodoByID	-> GET "/todos/:id" -> memunculkan todo list berdasarkan ID
+### GetTodoByID -> Memunculkan todo list berdasarkan ID
+- GET 
+```
+https://todos-api-production.up.railway.app/v1/todos/:id
+```
 
-UpdateTodo -> PUT "/todos/:id" -> mengedit dan mengupdate todo list
+### UpdateTodo -> Mengedit dan mengupdate todo list
+- PUT 
+```
+https://todos-api-production.up.railway.app/v1/todos/:id
+```
 
-DeleteTodo -> DELETE "/todos/:id" -> menghapus todo list 
-
+### DeleteTodo -> Menghapus todo list 
+- DELETE 
+```
+https://todos-api-production.up.railway.app/v1/todos/:id
+```
 
 ### tugas anggota (team 9)
 

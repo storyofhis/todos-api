@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5eac4bfd-9e4f-40ed-86a6-b12c438b41f3",
+		"_postman_id": "7484767c-2ad0-491d-a4e9-00679a23763d",
 		"name": "todos-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23401211"
@@ -10,7 +10,20 @@
 			"name": "GETALLTODOS",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "todos-api-production.up.railway.app/v1/todos",
+					"host": [
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"v1",
+						"todos"
+					]
+				}
 			},
 			"response": []
 		},
@@ -21,7 +34,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\" : \"todos 2\",\r\n    \"description\" : \"lorem ipsum dolor ipsit\",\r\n    \"isDone\" : false\r\n}",
+					"raw": "{\r\n    \"title\" : \"todos 3\",\r\n    \"description\" : \"lorem ipsum dolor ipsit\",\r\n    \"isDone\" : false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -29,11 +42,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/v1/todos",
+					"raw": "todos-api-production.up.railway.app/v1/todos",
 					"host": [
-						"localhost"
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
 					],
-					"port": "8000",
 					"path": [
 						"v1",
 						"todos"
@@ -46,7 +61,21 @@
 			"name": "GETTODOBYID",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "todos-api-production.up.railway.app/v1/todos/1",
+					"host": [
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"v1",
+						"todos",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
@@ -56,15 +85,17 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/v1/todos/2",
+					"raw": "todos-api-production.up.railway.app/v1/todos/4",
 					"host": [
-						"localhost"
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
 					],
-					"port": "8000",
 					"path": [
 						"v1",
 						"todos",
-						"2"
+						"4"
 					]
 				}
 			},
@@ -85,15 +116,17 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/v1/todos/9",
+					"raw": "todos-api-production.up.railway.app/v1/todos/4",
 					"host": [
-						"localhost"
+						"todos-api-production",
+						"up",
+						"railway",
+						"app"
 					],
-					"port": "8000",
 					"path": [
 						"v1",
 						"todos",
-						"9"
+						"4"
 					]
 				}
 			},

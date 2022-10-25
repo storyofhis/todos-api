@@ -37,27 +37,27 @@ see our result on swagger [link](https://editor.swagger.io)
 
 ## list endpoint
 
-### CreateTodo -> Create a list activity 
+### CreateTodo : Create a list activity 
 ```
 POST https://todos-api-production.up.railway.app/v1/todos
 ```
 
-### GetTodos -> Display all of your list activity 
+### GetTodos : Display all of your list activity 
 ```
 GET https://todos-api-production.up.railway.app/v1/todos
 ```
 
-### GetTodoByID -> Display all of your list activity with specific id  
+### GetTodoByID : Display all of your list activity with specific id  
 ```
 GET https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### UpdateTodo -> Edit and update a list activity
+### UpdateTodo : Edit and update a list activity
 ```
 PUT https://todos-api-production.up.railway.app/v1/todos/:id
 ```
 
-### DeleteTodo -> Delete list from your activity 
+### DeleteTodo : Delete list from your activity 
 ```
 DELETE https://todos-api-production.up.railway.app/v1/todos/:id
 ```
